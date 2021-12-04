@@ -3,6 +3,9 @@
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<c:url value="/ExcluirPessoa" var="url"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +15,13 @@
 <body>
 
 	<h1>Funcionarios: </h1> 
+	<c:import url="Logout.jsp"></c:import>
 	<ul> <!-- Java Standart TagLib -->
 		<c:forEach var="f" items="${funcionarios}">
-			<li>${f}</li>
+			<li>
+				${f.name}, ${f.genero}, ${f.id}
+				<a href="${url}?id=${f.id}">Excluir</a>
+			</li>
 		</c:forEach>
 	</ul>
 	

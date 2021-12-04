@@ -14,6 +14,7 @@
 		<c:redirect url="/FormEmpresa.jsp"/>
 	</c:if>
 	
+	<c:import url="Logout.jsp"></c:import>
 	<h1>Sucesso!</h1>
 	<p>Funcionario <strong>'${nome}'</strong> cadastrado com sucesso! <fmt:formatDate value="${data}"/> </p>
 	

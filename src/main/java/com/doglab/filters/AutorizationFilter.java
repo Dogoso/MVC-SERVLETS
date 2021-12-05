@@ -7,11 +7,9 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns="/*")
 public class AutorizationFilter implements Filter {
 
 	@Override
@@ -20,7 +18,13 @@ public class AutorizationFilter implements Filter {
 		HttpServletRequest httpReq = (HttpServletRequest) req;
 		HttpServletResponse httpRes = (HttpServletResponse) res;
 		
-		String actionURI = httpReq.getRequestURI().split("/")[2];
+		String actionURI = 
+				(httpReq.getRequestURI().split("/").length > 2)
+				? httpReq.getRequestURI().split("/")[2] : null;
+		System.out.println(actionURI);
+		if(actionURI==null) {
+			actionURI = "Login";
+		}
 		req.setAttribute("URI", actionURI);
 		
 		boolean needAutorization = !(actionURI.equals("Login") 

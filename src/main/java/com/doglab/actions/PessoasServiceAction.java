@@ -19,15 +19,20 @@ public class PessoasServiceAction implements Action {
 	public String exec(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException {
 		List<Pessoa> listaPessoas = new Banco().getFuncionarios();
-		
-		XStream xStream = new XStream();
-		xStream.alias("Pessoa", Pessoa.class);
-		String pessoasXML = xStream.toXML(listaPessoas);
-		
-		// Gson gson = new Gson();
-		// String pessoasJson = gson.toJson(listaPessoas);
-		
-		return "xml:"+pessoasXML;
+		String reqHeader = req.getHeader("Accept");
+		String pessoasToString = null;
+		String protocol = "null";
+		if(reqHeader.contains("application/xml")) {
+			XStream xStream = new XStream();
+			xStream.alias("Pessoa", Pessoa.class);
+			pessoasToString = xStream.toXML(listaPessoas);
+			protocol = "xml";
+		}else if(reqHeader.contains("application/json")) {
+			 Gson gson = new Gson();
+			 pessoasToString = gson.toJson(listaPessoas);
+			 protocol = "json";
+		}
+		return protocol+":"+pessoasToString;
 	}
 
 }

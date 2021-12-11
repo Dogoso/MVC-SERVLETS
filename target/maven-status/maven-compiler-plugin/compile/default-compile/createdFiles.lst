@@ -1,0 +1,15 @@
+com\doglab\actions\NovoRegistroAction.class
+com\doglab\actions\Action.class
+com\doglab\controllers\EntradaServlet.class
+com\doglab\models\Banco.class
+com\doglab\actions\PessoasServiceAction.class
+com\doglab\filters\EntranceFilter.class
+com\doglab\actions\ExcluirPessoaAction.class
+com\doglab\actions\InvalidateLoginAction.class
+com\doglab\actions\LoginAction.class
+com\doglab\filters\AutorizationFilter.class
+com\doglab\models\Usuario.class
+com\doglab\actions\FormularioAction.class
+com\doglab\actions\ValidateLoginAction.class
+com\doglab\actions\ListaPessoasAction.class
+com\doglab\models\Pessoa.class
